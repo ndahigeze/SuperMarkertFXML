@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="828.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="supermarkertfxml.ManagerUIControl.ManagerFormController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#logout" text="Logout" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="quit" mnemonicParsing="false" onAction="#quit" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <BorderPane layoutX="139.0" layoutY="-9.0" prefHeight="796.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <Pane prefHeight="45.0" prefWidth="1216.0" style="-fx-background-color: silver;" BorderPane.alignment="CENTER" />
+               </top>
+               <center>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                    <tabs>
+                      <Tab text="Start Page">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <BorderPane layoutX="14.0" prefHeight="712.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <left>
+                                          <SplitPane dividerPositions="0.5915492957746479" orientation="VERTICAL" prefHeight="712.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+                                            <items>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                   <children>
+                                                      <GridPane layoutX="13.0" layoutY="7.0" prefHeight="378.0" prefWidth="486.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="7.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="380.0" minWidth="10.0" prefWidth="312.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                            <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <JFXButton fx:id="modifyAccount" onAction="#modifyAccount" prefHeight="37.0" prefWidth="230.0" style="-fx-background-color: #4285f4;" text="Submit Change" GridPane.rowIndex="6" />
+                                                            <JFXTextField fx:id="mfnTf" labelFloat="true" prefHeight="42.0" prefWidth="380.0" promptText="First Name" unFocusColor="#6b6969" GridPane.rowIndex="1" />
+                                                            <JFXTextField fx:id="mlnTf" labelFloat="true" prefHeight="39.0" prefWidth="380.0" promptText="Last Name" GridPane.rowIndex="2" />
+                                                            <JFXTextField fx:id="muTf" labelFloat="true" prefHeight="42.0" prefWidth="380.0" promptText="Username" GridPane.rowIndex="3" />
+                                                            <JFXTextField fx:id="meTf" labelFloat="true" prefHeight="32.0" prefWidth="380.0" promptText="Email" GridPane.rowIndex="4" />
+                                                            <JFXTextField fx:id="mlTf" labelFloat="true" prefHeight="33.0" prefWidth="380.0" promptText="Location" GridPane.rowIndex="5" />
+                                                            <Label prefHeight="29.0" prefWidth="371.0" style="-fx-background-color: silver;" text="Modify Your Account information" />
+                                                         </children>
+                                                      </GridPane>
+                                                      <Label fx:id="modifyConfrimation" layoutX="6.0" layoutY="377.0" prefHeight="39.0" prefWidth="523.0" textFill="#e24a34">
+                                                         <font>
+                                                            <Font name="Times New Roman" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="289.0" prefWidth="487.0">
+                                                   <children>
+                                                      <GridPane layoutX="19.0" layoutY="7.0" prefHeight="234.0" prefWidth="447.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="0.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.0" minWidth="10.0" prefWidth="387.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <JFXButton fx:id="changePTf" onAction="#changePassword" prefHeight="38.0" prefWidth="200.0" style="-fx-background-color: #4285f4;" text="Submit change" GridPane.rowIndex="3" />
+                                                            <JFXPasswordField fx:id="cPsswTf" labelFloat="true" promptText="Current password" />
+                                                            <JFXPasswordField fx:id="newPassTf" labelFloat="true" promptText="New Password" GridPane.rowIndex="1" />
+                                                            <JFXPasswordField fx:id="cpassTf" labelFloat="true" promptText="Confirm password" GridPane.rowIndex="2" />
+                                                         </children>
+                                                      </GridPane>
+                                                      <Label fx:id="passChangeConf" layoutX="19.0" layoutY="235.0" prefHeight="37.0" prefWidth="514.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                            </items>
+                                          </SplitPane>
+                                       </left>
+                                       <right>
+                                          <TableView fx:id="managerInfo" onMouseClicked="#getManagerInfoList" prefHeight="592.0" prefWidth="680.0" BorderPane.alignment="CENTER">
+                                            <columns>
+                                              <TableColumn fx:id="mID" prefWidth="75.0" text="ID" />
+                                              <TableColumn fx:id="MFname" prefWidth="75.0" text="First Name" />
+                                                <TableColumn fx:id="MLname" prefWidth="75.0" text="Last Name" />
+                                                <TableColumn fx:id="MUsername" prefWidth="75.0" text="User Name" />
+                                                <TableColumn fx:id="MLocation" prefWidth="75.0" text="Location" />
+                                                <TableColumn fx:id="MEmail" prefWidth="75.0" text="Email Address" />
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </right>
+                                    </BorderPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Hired employees list And hired Employee">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <BorderPane layoutX="278.0" layoutY="307.0" prefHeight="712.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <left>
+                                          <GridPane prefHeight="431.0" prefWidth="528.0" BorderPane.alignment="CENTER">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="188.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.0" minWidth="10.0" prefWidth="230.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label prefHeight="35.0" prefWidth="157.0" text="Employee First Name" />
+                                                <Label prefHeight="35.0" prefWidth="168.0" text="Employee Last Name" GridPane.rowIndex="1" />
+                                                <Label prefHeight="35.0" prefWidth="123.0" text="Location" GridPane.rowIndex="2" />
+                                                <Label prefHeight="35.0" prefWidth="123.0" text="Post " GridPane.rowIndex="3" />
+                                                <TextField fx:id="empfnTf" prefHeight="37.0" prefWidth="230.0" GridPane.columnIndex="1" />
+                                                <TextField fx:id="emplnTf" prefHeight="37.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="emplTf" prefHeight="37.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="emppTf" prefHeight="37.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <JFXButton fx:id="modifyBTN" onAction="#modifyEmployee" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: silver;" text="ModifyEmployee " GridPane.rowIndex="4" />
+                                                <JFXButton fx:id="empregBTN" onAction="#employeeRegister" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: silver;" text="Register Employee" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <JFXButton fx:id="empsuspendBTN" onAction="#suspendEmployee" prefHeight="37.0" prefWidth="192.0" style="-fx-background-color: silver;" text="Suspend Employee" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="empConfrimation" prefHeight="37.0" prefWidth="307.0" textFill="#33b5e5" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                             </children>
+                                          </GridPane>
+                                       </left>
+                                       <top>
+                                          <Pane prefHeight="45.0" prefWidth="1216.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label layoutY="4.0" prefHeight="32.0" prefWidth="209.0" text="Record new  Employee" underline="true" />
+                                             </children>
+                                          </Pane>
+                                       </top>
+                                       <bottom>
+                                          <BorderPane prefHeight="241.0" prefWidth="1210.0" BorderPane.alignment="CENTER">
+                                             <top>
+                                                <Pane prefHeight="37.0" prefWidth="1216.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <JFXButton fx:id="refreshEmpTableBTN" layoutY="4.0" onAction="#refreshEmployeeList" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: silver;" text="Refresh table" />
+                                                      <Label layoutX="819.0" layoutY="-1.0" prefHeight="32.0" prefWidth="397.0" text="Employees List" />
+                                                   </children>
+                                                </Pane>
+                                             </top>
+                                             <center>
+                                                <TableView fx:id="employeesList" onMouseClicked="#getEmpInfo" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                  <columns>
+                                                    <TableColumn fx:id="empIdColumn" prefWidth="75.0" text="ID" />
+                                                    <TableColumn fx:id="empFnColumn" prefWidth="75.0" text="First Name" />
+                                                      <TableColumn fx:id="emplnColumn" prefWidth="75.0" text="Last Name" />
+                                                      <TableColumn fx:id="empunColumn" prefWidth="75.0" text="UserName" />
+                                                      <TableColumn fx:id="emplColumn" prefWidth="75.0" text="Location" />
+                                                      <TableColumn fx:id="EmpEcolumn" prefWidth="75.0" text="Email Address" />
+                                                      <TableColumn fx:id="emppColumn" prefWidth="75.0" text="post" />
+                                                      <TableColumn fx:id="EmplhdColumn" prefWidth="75.0" text="Hired Date" />
+                                                  </columns>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                </TableView>
+                                             </center>
+                                          </BorderPane>
+                                       </bottom>
+                                       <right>
+                                          <GridPane prefHeight="422.0" prefWidth="451.0" BorderPane.alignment="CENTER">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="313.0" minWidth="10.0" prefWidth="296.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="380.0" minWidth="10.0" prefWidth="180.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="213.0" minHeight="10.0" prefHeight="213.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="213.0" minHeight="10.0" prefHeight="213.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="213.0" minHeight="10.0" prefHeight="213.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <TextField fx:id="sByIdTf" prefHeight="42.0" prefWidth="243.0" />
+                                                <JFXDatePicker fx:id="searchEmplbyHiredDateTF" prefHeight="45.0" prefWidth="320.0" promptText="MM/DD/YYYY" GridPane.rowIndex="1" />
+                                                <JFXButton fx:id="searchEmpByIdBTN" onAction="#searchEmployeebyId" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: silver;" text="Search by ID" GridPane.columnIndex="1" />
+                                                <JFXButton fx:id="sbyHiredDateBTN" onAction="#searchEmployeeByHiredDate" prefHeight="46.0" prefWidth="157.0" style="-fx-background-color: silver;" text="Search by hired date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <JFXButton fx:id="showSuspended" prefHeight="41.0" prefWidth="320.0" style="-fx-background-color: #33b5e5;" text="Show the List of Suspended Employees" GridPane.rowIndex="2" />
+                                             </children>
+                                          </GridPane>
+                                       </right>
+                                    </BorderPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                      <Tab text="Create and modify product">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <BorderPane layoutX="217.0" layoutY="191.0" prefHeight="712.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <top>
+                                          <Pane prefHeight="40.0" prefWidth="1216.0" style="-fx-background-color: silver;" BorderPane.alignment="CENTER" />
+                                       </top>
+                                       <left>
+                                          <GridPane prefHeight="411.0" prefWidth="542.0" BorderPane.alignment="CENTER">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="121.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="238.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="72.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label prefHeight="31.0" prefWidth="143.0" text="Product Name" />
+                                                <Label prefHeight="31.0" prefWidth="143.0" text="Product Description" GridPane.rowIndex="1" />
+                                                <Label prefHeight="31.0" prefWidth="143.0" text="Quantity" GridPane.rowIndex="2" />
+                                                <Label prefHeight="31.0" prefWidth="143.0" text="Unity Cost" GridPane.rowIndex="3" />
+                                                <Label prefHeight="31.0" prefWidth="143.0" text="Unity Price" GridPane.rowIndex="4" />
+                                                <Label prefHeight="31.0" prefWidth="143.0" text="Sold/Not Sold" GridPane.rowIndex="5" />
+                                                <TextField fx:id="pnTf" GridPane.columnIndex="1" />
+                                                <TextField fx:id="pdTf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="qTf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="upTf" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <TextField fx:id="ucTf" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <JFXComboBox fx:id="solddecComb" labelFloat="true" prefHeight="31.0" prefWidth="146.0" promptText="Sold Decison" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                                <JFXComboBox fx:id="unityTypecomb" labelFloat="true" prefHeight="31.0" prefWidth="152.0" promptText="Unity Type" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                 
+                                                </JFXComboBox>
+                                                <JFXButton fx:id="reduceAddQuanity" onAction="#addReduceQuanity" prefHeight="31.0" prefWidth="151.0" style="-fx-background-color: #0099cc;" text="Reduce/Add" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                                <JFXButton fx:id="addProductBTN" onAction="#addProduct" prefHeight="38.0" prefWidth="145.0" style="-fx-background-color: #0099cc;" text="Add product" GridPane.rowIndex="6" />
+                                                <JFXButton fx:id="modifyProductBTN" onAction="#modifyProduct" prefHeight="36.0" prefWidth="166.0" style="-fx-background-color: #0099cc;" text="Modify" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <JFXRadioButton fx:id="addRadio" text="ADD" GridPane.rowIndex="7">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="AddReduceQuanity" />
+                                                   </toggleGroup>
+                                                </JFXRadioButton>
+                                                <JFXRadioButton fx:id="reduceRadio" prefHeight="21.0" prefWidth="102.0" text="Reduce" toggleGroup="$AddReduceQuanity" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <JFXButton fx:id="refeshProductListBTN" onAction="#refeshProductListBTN" prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: silver;" text="Refresh Table" GridPane.rowIndex="8" />
+                                             </children>
+                                          </GridPane>
+                                       </left>
+                                       <bottom>
+                                          <TableView fx:id="productList" onMouseClicked="#getTableValue" prefHeight="231.0" prefWidth="1216.0" BorderPane.alignment="CENTER">
+                                            <columns>
+                                              <TableColumn fx:id="productId" prefWidth="75.0" text="Code" />
+                                              <TableColumn fx:id="productName" prefWidth="75.0" text="Product Name" />
+                                                <TableColumn fx:id="productDescription" prefWidth="75.0" text="Description" />
+                                                <TableColumn fx:id="productQty" prefWidth="75.0" text="Quantity" />
+                                                <TableColumn fx:id="costUnity" prefWidth="75.0" text="Cost/Unit" />
+                                                <TableColumn fx:id="priceUnity" prefWidth="75.0" text="Price/Unity" />
+                                                <TableColumn fx:id="dateAdded" prefWidth="75.0" text="DateAdded" />
+                                                <TableColumn fx:id="soldDecision" prefWidth="75.0" text="Sold Decision" />
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </bottom>
+                                       <right>
+                                          <Pane prefHeight="402.0" prefWidth="555.0" style="-fx-background-color: silver;" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <JFXButton fx:id="searchBydescription" layoutX="411.0" layoutY="14.0" onAction="#searbyProductByDescription" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #33b5e5;" text="Search Product" />
+                                                <JFXTextField fx:id="psdTf" labelFloat="true" layoutX="213.0" layoutY="19.0" prefHeight="31.0" prefWidth="186.0" promptText="Description" />
+                                                <JFXTextField fx:id="psnTf" labelFloat="true" layoutX="26.0" layoutY="19.0" promptText="Product Name" />
+                                                <JFXButton fx:id="searchPriceBTN" layoutX="411.0" layoutY="107.0" onAction="#searchByPrice" prefHeight="42.0" prefWidth="130.0" style="-fx-background-color: #33b5e5;" text="Search by price" />
+                                                <JFXComboBox fx:id="psComb" labelFloat="true" layoutX="283.0" layoutY="107.0" prefHeight="40.0" prefWidth="128.0" promptText="Condition" style="-fx-background-color: white;" />
+                                                <JFXButton fx:id="setVatBTN" layoutX="404.0" layoutY="276.0" onAction="#setVat" prefHeight="32.0" prefWidth="137.0" style="-fx-background-color: #0099cc;" text="Set VAT" />
+                                                <JFXTextField fx:id="vatTf" labelFloat="true" layoutX="235.0" layoutY="277.0" promptText="VAT" />
+                                                <Label fx:id="proInfoMessage" layoutX="9.0" layoutY="395.0" prefHeight="41.0" prefWidth="542.0" textFill="WHITE" />
+                                                <JFXDialog layoutX="212.0" layoutY="395.0" />
+                                                <Label fx:id="taxView" layoutX="375.0" layoutY="330.0" prefHeight="46.0" prefWidth="176.0" style="-fx-background-color: white;" textFill="#0099cc">
+                                                   <font>
+                                                      <Font name="Times New Roman" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <JFXTextField fx:id="searchP" labelFloat="true" layoutX="110.0" layoutY="109.0" prefHeight="39.0" prefWidth="168.0" promptText="Price" />
+                                             </children>
+                                          </Pane>
+                                       </right>
+                                    </BorderPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Selling Transaction List">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <BorderPane prefHeight="712.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <bottom>
+                                          <BorderPane prefHeight="288.0" prefWidth="1216.0" BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <TableView fx:id="transactionList" prefHeight="260.0" prefWidth="1216.0" BorderPane.alignment="CENTER">
+                                                  <columns>
+                                                    <TableColumn fx:id="transactionNo" prefWidth="75.0" text="Transaction NO" />
+                                                    <TableColumn fx:id="TransactionDate" prefWidth="192.0" text="Transaction Date" />
+                                                      <TableColumn fx:id="soldby" prefWidth="51.0" text="sold by" />
+                                                      <TableColumn fx:id="ProductName" prefWidth="75.0" text="Product name" />
+                                                      <TableColumn fx:id="ProductDescription" prefWidth="156.0" text="Product description" />
+                                                      <TableColumn fx:id="QuantitySold" prefWidth="87.0" text="Quantity Sold" />
+                                                      <TableColumn fx:id="Unitprice" prefWidth="100.0" text="Unit price" />
+                                                      <TableColumn fx:id="Netprice" prefWidth="75.0" text="Net price" />
+                                                      <TableColumn fx:id="VAT" prefWidth="75.0" text="VAT" />
+                                                      <TableColumn fx:id="Amount" prefWidth="75.0" text="Amount" />
+                                                  </columns>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                </TableView>
+                                             </bottom>
+                                             <top>
+                                                <Pane prefHeight="64.0" prefWidth="1216.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <Label layoutX="489.0" layoutY="31.0" prefHeight="27.0" prefWidth="170.0" style="-fx-background-color: white;" text="Sale Transactions list">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXButton fx:id="rtBTN" layoutY="25.0" onAction="#refreshTransactionTable" prefHeight="39.0" prefWidth="204.0" style="-fx-background-color: Silver;" text="Refresh Table" />
+                                                      <Label fx:id="cashInfo" layoutX="779.0" layoutY="6.0" prefHeight="39.0" prefWidth="437.0" textFill="#0099cc">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </Pane>
+                                             </top>
+                                          </BorderPane>
+                                       </bottom>
+                                       <right>
+                                          <BorderPane prefHeight="476.0" prefWidth="383.0" BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Pane prefHeight="257.0" prefWidth="383.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <TableView fx:id="cashReceived" layoutX="-1.0" layoutY="39.0" prefHeight="214.0" prefWidth="382.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="receivedDate" prefWidth="75.0" text="Received Date" />
+                                                          <TableColumn fx:id="AmountCash" prefWidth="75.0" text="Amount" />
+                                                        </columns>
+                                                         <columnResizePolicy>
+                                                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                         </columnResizePolicy>
+                                                      </TableView>
+                                                      <JFXButton fx:id="raBTN" layoutY="8.0" onAction="#refreshCashTransactionTable" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: silver;" text="Refresh" />
+                                                      <Label layoutX="113.0" layoutY="13.0" prefHeight="21.0" prefWidth="256.0" text="Amount received list">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </Pane>
+                                             </bottom>
+                                             <right>
+                                                <Pane prefHeight="240.0" prefWidth="379.0" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <JFXButton fx:id="sbydBTN" layoutX="255.0" layoutY="74.0" onAction="#searchCashByDate" style="-fx-background-color: #009966;" text="Earch by date" />
+                                                      <JFXDatePicker fx:id="sadTf" layoutX="50.0" layoutY="74.0" promptText="MM/DD/YYYY" />
+                                                      <Label layoutX="33.0" layoutY="14.0" prefHeight="27.0" prefWidth="347.0" style="-fx-background-color: silver;" text="Search Amount Received at any date">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </Pane>
+                                             </right>
+                                          </BorderPane>
+                                       </right>
+                                       <left>
+                                          <Pane prefHeight="388.0" prefWidth="495.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <JFXButton fx:id="searchTDTBTN" layoutX="14.0" layoutY="41.0" onAction="#searchTransactionByDate" prefHeight="32.0" prefWidth="122.0" style="-fx-background-color: #009966;" text="Search by Date" />
+                                                <JFXDatePicker fx:id="trDateTf" layoutX="136.0" layoutY="42.0" promptText="MM/DD/YYYY" />
+                                                <JFXButton fx:id="searchByd" layoutX="14.0" layoutY="156.0" onAction="#searchUserCondition" prefHeight="31.0" prefWidth="115.0" style="-fx-background-color: #009966;" text="Search" />
+                                                <JFXComboBox fx:id="trcondComb" labelFloat="true" layoutX="129.0" layoutY="156.0" prefHeight="31.0" prefWidth="152.0" promptText="Condition" style="-fx-background-color: white;" />
+                                                <JFXTextField fx:id="stcTf" layoutX="285.0" layoutY="156.0" prefHeight="31.0" prefWidth="184.0" />
+                                                <Label layoutX="14.0" layoutY="4.0" prefHeight="21.0" prefWidth="378.0" style="-fx-background-color: silver;" text="Search Transactions">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="transInfo" layoutX="14.0" layoutY="296.0" prefHeight="42.0" prefWidth="410.0" textFill="#0099cc" />
+                                             </children>
+                                          </Pane>
+                                       </left>
+                                    </BorderPane>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </center>
+            </BorderPane>
+         </children></AnchorPane>
+  </children>
+</VBox>

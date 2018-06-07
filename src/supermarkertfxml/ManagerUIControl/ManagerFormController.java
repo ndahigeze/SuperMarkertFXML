@@ -27,6 +27,8 @@ import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -279,10 +281,20 @@ public class ManagerFormController implements Initializable {
      @FXML
     void setVat(ActionEvent event) {
            Sales s=new Sales();
+           List<Sales> list=ISale.showTax();
+           Optional<Sales> op=Optional.of(s);
            ISale is=new ISale();
-          c=new Converter();
-          s.setVat(c.getDValue(vatTf.getText()));
-          is.createTax(s);
+           c=new Converter();
+           if(list.isEmpty()){
+                        s.setVat(c.getDValue(vatTf.getText()));
+                      System.out.println(is.createTax(s));
+           }else{
+                      s.setVat(c.getDValue(vatTf.getText()));
+                      System.out.println(is.updateTax(s));
+           }
+           showVat();
+        vatTf.setText(null); 
+        
     }
        @FXML
     void getManagerInfoList(MouseEvent event) {
@@ -738,16 +750,26 @@ public class ManagerFormController implements Initializable {
                  ManagerUI.close();
     }
    void showVat(){
-    IProduct ipr=new IProduct(); 
-    taxView.setText( "Rwf  "+ipr.showVat());
+    List<Sales> list=ISale.showTax(); 
+    if(!list.isEmpty()){
+        list.forEach((s) -> {
+            taxView.setText( "Rwf  "+s.getVat()+" %");
+        });
+    }
    }
     private boolean checkBlank(){
         return mfnTf.getText().isEmpty()||mlnTf.getText().isEmpty()||meTf.getText().isEmpty()||mlTf.getText().isEmpty()||muTf.getText().isEmpty();
     }
-    private void showVAT(){
-     ISale is=new ISale();
-     vat=is.showTax();
-     System.out.print(vat);
+    private void retrieveVAT(){
+     List<Sales> list=ISale.showTax();
+     if(!list.isEmpty()){
+         list.forEach((s)->{
+              vat=s.getVat();
+               System.out.print(vat);
+         });
+     
+     }
+     
     }
     private void cleanAccModifyTFField(){
         mfnTf.setText(null);
@@ -772,12 +794,12 @@ public class ManagerFormController implements Initializable {
       ucTf.setText(null);
    } 
       private void onStarts(){
-        viewLogginManager();
-        viewEmployeeList();
-        showVAT();
-        viewProducts();
-        ComboBoxAddItems();
-        showVat();
+         viewLogginManager();
+         viewEmployeeList();
+         retrieveVAT();
+         viewProducts();
+         ComboBoxAddItems();
+         showVat();
          viewCashReceived();
          viewTransaction();
     }

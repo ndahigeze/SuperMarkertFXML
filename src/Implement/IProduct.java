@@ -79,10 +79,10 @@ public class IProduct {
         Connection con=ConCreation.connect();
         Product pr=null;
     try{
-          String sql="select * from where pname=? and pdescription=?";
-          PreparedStatement st=con.prepareCall(sql);
-          st.setString(2, name);
-          st.setString(3, description);
+          String sql="select * from product where pname=? and description=?";
+          PreparedStatement st=con.prepareStatement(sql);
+          st.setString(1, name);
+          st.setString(2, description);
           ResultSet rs=st.executeQuery();
           if(rs.next()){
             pr=new Product();
@@ -147,35 +147,33 @@ public class IProduct {
      try{
          switch (sign) {
              case "P < Input":
-                 sql="{call  showprobylessprice(?,?)} ";
+                 sql="select * from product where unitprice<?";
                  break;
              case "P > Input":
-                 sql="{call showprobygreaterprice(?,?)} ";
+                 sql="select * from product where unitprice>? ";
                  break;
              default:
-                 sql="{call showprobyequalprice(?,?)}";
+                 sql="select * from product where unitprice=?";
                  break;
          }
-          CallableStatement st=con.prepareCall(sql);
-          st.registerOutParameter(1,OracleTypes.CURSOR);
-          st.setDouble(2, price);
-          st.executeQuery();
-          ResultSet rs=(ResultSet) st.getObject(1);
+          PreparedStatement st=con.prepareCall(sql);
+          st.setDouble(1, price);
+          ResultSet rs=st.executeQuery();
           while(rs.next()){ 
-             pr=new Product();
-             pr.setCode(rs.getInt(1));
-            pr.setPName(rs.getString(2));
-            pr.setPDescription(rs.getString(3));
-            pr.setPQuantity(rs.getDouble(4));
+            pr=new Product();
+            pr.setCode(rs.getInt(1));
+            pr.setRecordDate(rs.getDate(2));
+            pr.setPName(rs.getString(3));
+            pr.setPDescription(rs.getString(4));
             pr.setPUType(rs.getString(5));
-            pr.setCostUnit(rs.getDouble(6));
+            pr.setPQuantity(rs.getDouble(6));
             pr.setPriceUnit(rs.getDouble(7));
-            pr.setRecordDate(rs.getDate(8));
+            pr.setCostUnit(rs.getDouble(8));
             pr.setSold(rs.getString(9));
             pr.setSpriceUnity( "Rwf "+NumberFormat.getInstance(Locale.US).format(pr.getPriceUnit()));
             pr.setScostUnity("RWF "+NumberFormat.getInstance(Locale.US).format(pr.getCostUnit()));
             pr.setUnityTypeQuantity(NumberFormat.getInstance(Locale.US).format(pr.getPQuantity())+" "+pr.getPUType());
-            list.add(pr);
+            list.add(pr); 
           }
           con.close();
      }catch(Exception ex){
@@ -228,22 +226,6 @@ public class IProduct {
            return ex.getMessage();
        }
     } 
-    //function to show vat;
-    public double showVat(){
-         Connection con=ConCreation.connect();
-        Product pro=null;
-        double vat=0;
-       try{
-           String sql="{call  showVat(?)}";
-           CallableStatement st=con.prepareCall(sql);
-           st.registerOutParameter(1, OracleTypes.DOUBLE);
-           st.execute();
-           vat=st.getDouble(1);
-       }catch(Exception ex){
-           System.out.print(ex.getMessage());
-       }
-       return vat;
-    }
 }
 
 

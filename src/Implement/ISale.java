@@ -13,6 +13,7 @@ import Domain.Sequence;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -360,35 +361,51 @@ public class  ISale{
    return list;
    }
    
-   
-      public String createTax(Sales s){
+ //function to set the tax  
+  public String createTax(Sales s){
        Connection con=ConCreation.connect();
        try{
-         String sql="{call  setVat(?)}";
-         CallableStatement st=con.prepareCall(sql);
+         String sql="insert into vat (vat_amaunt) values(?)";
+         PreparedStatement st=con.prepareStatement(sql);
          st.setDouble(1, s.getVat());
          st.execute();
          con.close();
-         return "done";
+         return "VAT is set succesfully";
     }catch(Exception ex){
-        return ex.getMessage();
+        return "VAT not change do to "+ex.getMessage();
     }
    }
-   
-   public double showTax(){
+   //function to change the tax
+  public String updateTax(Sales s){
    Connection con=ConCreation.connect();
+   try{
+       String sql="update vat set vat_amaunt=?";
+       PreparedStatement st=con.prepareStatement(sql);
+       st.setDouble(1,s.getVat());
+       st.execute();
+       return "Vat is changed successfully";
+   }catch(Exception ex){
+       return "VAT not set do to "+ex.getMessage();
+   }
+  }
+   public static List<Sales> showTax(){
+   Connection con=ConCreation.connect();
+   List<Sales> list=new ArrayList();
    Sales s=null;
    double vat=0;
    try{
-       String sql="{call showvat(?)}";
-       CallableStatement st=con.prepareCall(sql);
-       st.registerOutParameter(1, OracleTypes.FLOAT);
-       st.executeQuery();
-       vat=st.getDouble(1);
-       System.out.print(vat);
+       String sql="select * from vat";
+       PreparedStatement st=con.prepareStatement(sql);
+       ResultSet rs=st.executeQuery();
+       while(rs.next()){
+           s=new Sales();
+           s.setVat(rs.getDouble(2));
+           list.add(s);
+       }
+       System.out.print("Tax retrieved");
    }catch(Exception ex){
        System.out.print(ex.getMessage());
    }
-   return vat;
+   return list;
    }
 }

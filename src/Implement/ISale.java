@@ -6,6 +6,7 @@
 package Implement;
 
 import Domain.Employee;
+import Domain.Product;
 import Domain.Sales;
 import confClass.ConCreation;
 import confClass.ISequence;
@@ -33,6 +34,71 @@ public class  ISale{
          static Employee emp;
          //static DateGenerator dg;
          Sequence sq;
+    //function to search all product available for sales
+         //function to search product to be sold by description
+      public static ObservableList<Sales> findAll(){
+        Connection con=ConCreation.connect();
+        ObservableList<Sales> list=FXCollections.observableArrayList();
+        Sales sl=null;
+            try{
+                  String sql="select * from product where sold=?";
+                  PreparedStatement st=con.prepareStatement(sql);
+                  st.setString(1, "YES");
+                  ResultSet rs=st.executeQuery();
+                  while(rs.next()){
+                    sl=new Sales();
+                    sl.setCode(rs.getInt(1));
+                    sl.setRecordDate(rs.getDate(2));
+                    sl.setPName(rs.getString(3));
+                    sl.setPDescription(rs.getString(4));
+                    sl.setPUType(rs.getString(5));
+                    sl.setPQuantity(rs.getDouble(6));
+                    sl.setPriceUnit(rs.getDouble(7));
+                    sl.setCostUnit(rs.getDouble(8));
+                    sl.setSold(rs.getString(9));
+                    sl.setSpriceUnity( "Rwf "+NumberFormat.getInstance(Locale.US).format(sl.getPriceUnit()));
+                    sl.setScostUnity("RWF "+NumberFormat.getInstance(Locale.US).format(sl.getCostUnit()));
+                    sl.setUnityTypeQuantity(NumberFormat.getInstance(Locale.US).format(sl.getPQuantity())+" "+sl.getPUType());
+                    list.add(sl);
+                  }
+                  con.close();
+            }catch(Exception ex){
+               System.out.println(ex.getMessage()+"test");
+            }
+              return list;
+    }     
+    //function to search product to be sold by description
+          public static Sales findToSale(String name,String description){
+        Connection con=ConCreation.connect();
+        Sales sl=null;
+    try{
+          String sql="select * from product where pname=? and description=? and sold=?";
+          PreparedStatement st=con.prepareStatement(sql);
+          st.setString(1, name);
+          st.setString(2, description);
+          st.setString(3, "YES");
+          ResultSet rs=st.executeQuery();
+          if(rs.next()){
+            sl=new Sales();
+            sl.setCode(rs.getInt(1));
+            sl.setRecordDate(rs.getDate(2));
+            sl.setPName(rs.getString(3));
+            sl.setPDescription(rs.getString(4));
+            sl.setPUType(rs.getString(5));
+            sl.setPQuantity(rs.getDouble(6));
+            sl.setPriceUnit(rs.getDouble(7));
+            sl.setCostUnit(rs.getDouble(8));
+            sl.setSold(rs.getString(9));
+            sl.setSpriceUnity( "Rwf "+NumberFormat.getInstance(Locale.US).format(sl.getPriceUnit()));
+            sl.setScostUnity("RWF "+NumberFormat.getInstance(Locale.US).format(sl.getCostUnit()));
+            sl.setUnityTypeQuantity(NumberFormat.getInstance(Locale.US).format(sl.getPQuantity())+" "+sl.getPUType());
+          }
+          con.close();
+    }catch(Exception ex){
+       System.out.println(ex.getMessage());
+    }
+    return sl;
+    }
     public String soldRecod(int eId,Sales sl){
         Connection con=ConCreation.connect();
          sq=ISequence.soldId();

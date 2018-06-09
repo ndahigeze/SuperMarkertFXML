@@ -75,6 +75,7 @@ public class IProduct {
       return list;
     }
     
+    //function to find product by description
     public static Product findByDescription(String name,String description){
         Connection con=ConCreation.connect();
         Product pr=null;
@@ -106,7 +107,7 @@ public class IProduct {
     return pr;
     }
     
-   //searching product by code
+   //searching product by code  
     public static Product findByCode(int code){
           Connection con=ConCreation.connect();
         Product pr=null;

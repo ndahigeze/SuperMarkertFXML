@@ -47,7 +47,7 @@ public class IManager{
          Connection con=ConCreation.connect();
          Manager ma=null;
         try{
-        String sql="select * from employee where password=? and username=?";
+        String sql="select * from employee where password=? and username=? and privillage=1";
         PreparedStatement st=con.prepareStatement(sql);
         st.setString(1, password);
         st.setString(2, userName);

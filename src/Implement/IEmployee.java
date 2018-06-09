@@ -93,7 +93,7 @@ public class IEmployee {
        Connection con=ConCreation.connect();
        Employee emp=null;
     try{
-        String sql="select * from employee where id=?";
+        String sql="select * from employee where id=? and privillage=2";
         PreparedStatement st=con.prepareStatement(sql);
         st.setInt(1, id);
         ResultSet rs=st.executeQuery();
@@ -120,7 +120,7 @@ public class IEmployee {
        Connection con=ConCreation.connect();
     Employee emp=null;
     try{
-        String sql="select * from employee where username=? and password=? ";
+        String sql="select * from employee where username=? and password=? and privillage=2";
         PreparedStatement st=con.prepareStatement(sql);
         st.setString(1, username);
         st.setString(2, password);

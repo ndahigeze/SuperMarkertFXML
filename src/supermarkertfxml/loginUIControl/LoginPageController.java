@@ -20,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 import Implement.IManager;
 import confClass.Converter;
 import javafx.scene.control.Label;

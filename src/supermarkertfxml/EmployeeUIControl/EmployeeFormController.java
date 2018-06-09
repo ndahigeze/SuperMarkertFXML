@@ -5,11 +5,17 @@
  */
 package supermarkertfxml.EmployeeUIControl;
 
+import Domain.Sales;
+import Implement.ISale;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import java.awt.Color;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +24,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import supermarkertfxml.loginUIControl.LoginUI;
@@ -38,15 +45,15 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private Label vatLabel;
     @FXML
-    private TableView<?> AvailableProductTable;
+    private TableView<Sales> AvailableProductTable;
     @FXML
-    private TableColumn<?, ?> AProductNameColumn;
+    private TableColumn<Sales, String> AProductNameColumn;
     @FXML
-    private TableColumn<?, ?> AdescriptionColumn;
+    private TableColumn<Sales, String> AdescriptionColumn;
     @FXML
-    private TableColumn<?, ?> AQTYColumn;
+    private TableColumn<Sales, String> AQTYColumn;
     @FXML
-    private TableColumn<?, ?> APriceUnitColumn;
+    private TableColumn<Sales, String> APriceUnitColumn;
     @FXML
     private Label totalPayAmountLable;
     @FXML
@@ -64,11 +71,9 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private TableColumn<?, ?> CTotalAmountColumn;
     @FXML
-    private JFXTextField sepnameTf;
+    private TextField sepnameTf;
     @FXML
-    private JFXTextField sepdTf;
-    @FXML
-    private JFXTextField soldQTYTf;
+    private TextField soldQTYTf;
     @FXML
     private Label priceabel;
     @FXML
@@ -107,6 +112,10 @@ public class EmployeeFormController implements Initializable {
     private MenuItem logout;
     @FXML
     private MenuItem exit;
+    @FXML
+    private Label searchResult;
+    @FXML
+    private JFXButton refreshAvailbaleBTN;
 
     /**
      * Initializes the controller class.
@@ -114,10 +123,28 @@ public class EmployeeFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        onStart();
     }    
 
     @FXML
     private void searchProduct(ActionEvent event) {
+        sPnameTf.getText();
+        spdTf.getText();
+        if(sPnameTf.getText().isEmpty()||spdTf.getText().isEmpty()){
+            searchResult.setText("Product Not Found");
+        }else{
+            Sales sl=ISale.findToSale(sPnameTf.getText(), spdTf.getText());
+            ObservableList<Sales> list=FXCollections.observableArrayList();
+            list.add(sl);
+            AProductNameColumn.setCellValueFactory(new PropertyValueFactory<>("PName"));
+            AdescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("PDescription"));
+            AQTYColumn.setCellValueFactory(new PropertyValueFactory<>("UnityTypeQuantity"));
+            APriceUnitColumn.setCellValueFactory(new PropertyValueFactory<>("SpriceUnity"));
+            AvailableProductTable.setItems(list);
+
+        }
+        sPnameTf.setText(null);
+        spdTf.setText(null);
     }
 
 
@@ -155,5 +182,31 @@ public class EmployeeFormController implements Initializable {
     private void quit(ActionEvent event) {
         EmployeeUI.close();
     }
-    
+    void showVAT(){
+        List<Sales> list=ISale.showTax();
+        if(!list.isEmpty()){
+            list.forEach((s)->{
+                vatLabel.setText("RWF "+s.getVat()+" %");
+        });
+        }
+    }
+    void viewProducts(){
+
+         ObservableList<Sales> list=ISale.findAll();
+         AProductNameColumn.setCellValueFactory(new PropertyValueFactory<>("PName"));
+         AdescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("PDescription"));
+         AQTYColumn.setCellValueFactory(new PropertyValueFactory<>("UnityTypeQuantity"));
+         APriceUnitColumn.setCellValueFactory(new PropertyValueFactory<>("SpriceUnity"));
+         AvailableProductTable.setItems(list);
+        
+    }
+    void onStart(){
+        showVAT();
+        viewProducts();
+    }
+
+    @FXML
+    private void refreshAvailbale(ActionEvent event) {
+        viewProducts();
+    }
 }

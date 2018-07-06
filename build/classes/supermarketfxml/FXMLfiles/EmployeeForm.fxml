@@ -58,15 +58,13 @@
                                  <children>
                                     <BorderPane prefHeight="660.0" prefWidth="1311.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <left>
-                                          <Pane prefHeight="745.0" prefWidth="276.0" style="-fx-background-color: #575353;" BorderPane.alignment="CENTER">
+                                          <Pane prefHeight="745.0" prefWidth="276.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                                              <children>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="108.0" prefHeight="40.0" prefWidth="258.0" text="Search Product" textFill="WHITE">
+                                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="108.0" prefHeight="40.0" prefWidth="258.0" text="Search Product" textFill="#0099cc">
                                                    <font>
                                                       <Font name="Times New Roman" size="20.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="spdTf" layoutX="2.0" layoutY="311.0" prefHeight="44.0" prefWidth="272.0" promptText="Product Description" />
-                                                <TextField fx:id="sPnameTf" layoutX="2.0" layoutY="194.0" prefHeight="44.0" prefWidth="272.0" promptText="Product Name" />
                                                 <JFXButton fx:id="searchProductBTN" buttonType="RAISED" layoutX="91.0" layoutY="403.0" onAction="#searchProduct" prefHeight="45.0" prefWidth="183.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Search" textFill="#0099cc">
                                                    <font>
                                                       <Font size="18.0" />
@@ -80,11 +78,13 @@
                                                 </Pane>
                                                 <Label fx:id="searchResult" layoutY="485.0" prefHeight="32.0" prefWidth="273.0" style="-fx-background-color: white;" textFill="#0099cc" />
                                                 <JFXButton fx:id="refreshAvailbaleBTN" buttonType="RAISED" layoutX="86.0" layoutY="517.0" onAction="#refreshAvailbale" prefHeight="38.0" prefWidth="187.0" style="-fx-background-color: silver;" text="Refresh Table" />
+                                                <TextField fx:id="sPnameTf" layoutX="10.0" layoutY="182.0" prefHeight="41.0" prefWidth="256.0" promptText="Product Name" />
+                                                <TextField fx:id="spdTf" layoutX="10.0" layoutY="281.0" prefHeight="40.0" prefWidth="257.0" promptText="Description" />
                                              </children>
                                           </Pane>
                                        </left>
                                        <right>
-                                          <Pane prefHeight="545.0" prefWidth="304.0" style="-fx-background-color: silver;" BorderPane.alignment="CENTER">
+                                          <Pane prefHeight="545.0" prefWidth="304.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                                              <children>
                                                 <Label alignment="CENTER" layoutX="-2.0" layoutY="-2.0" prefHeight="48.0" prefWidth="305.0" style="-fx-background-color: white;" text="Sale Products ">
                                                    <font>
@@ -97,12 +97,12 @@
                                                       <Font size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <JFXButton fx:id="calculatePriceBTN" layoutX="14.0" layoutY="305.0" onAction="#calculatePrice" prefHeight="40.0" prefWidth="282.0" style="-fx-background-color: white;" text="Calculate Price" textFill="#0099cc" />
+                                                <JFXButton fx:id="calculatePriceBTN" buttonType="RAISED" layoutX="14.0" layoutY="305.0" onAction="#calculatePrice" prefHeight="40.0" prefWidth="282.0" style="-fx-background-color: white;" text="Calculate Price" textFill="#0099cc" />
                                                 <JFXButton fx:id="recordBTN" buttonType="RAISED" layoutX="13.0" layoutY="478.0" onAction="#recordTransaction" prefHeight="40.0" prefWidth="284.0" style="-fx-background-color: #009966;" text="Record Transactions" />
-                                                <JFXButton fx:id="canselBTN" buttonType="RAISED" layoutX="198.0" layoutY="548.0" onAction="#canselTransaction" prefHeight="40.0" prefWidth="99.0" style="-fx-background-color: red;" text="Cansel " />
+                                                <JFXButton fx:id="canselBTN" buttonType="RAISED" layoutX="198.0" layoutY="548.0" onAction="#canselTransaction" prefHeight="40.0" prefWidth="99.0" style="-fx-background-color: red;" text="Cansel " textFill="#f8f6f6" />
                                                 <JFXButton fx:id="showInvoiceBTN" buttonType="RAISED" layoutX="12.0" layoutY="548.0" onAction="#showInvoice" prefHeight="40.0" prefWidth="182.0" style="-fx-background-color: White;" text="Show Invoice" textFill="#0099cc" />
                                                 <TextField fx:id="sepnameTf" layoutX="14.0" layoutY="73.0" prefHeight="40.0" prefWidth="276.0" promptText="Product Name" />
-                                                <TextField layoutX="14.0" layoutY="145.0" prefHeight="42.0" prefWidth="274.0" promptText="Description" />
+                                                <TextField fx:id="sepdTf" layoutX="14.0" layoutY="145.0" prefHeight="42.0" prefWidth="274.0" promptText="Description" />
                                                 <TextField fx:id="soldQTYTf" layoutX="14.0" layoutY="231.0" prefHeight="42.0" prefWidth="270.0" promptText="Quantity" />
                                              </children>
                                           </Pane>

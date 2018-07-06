@@ -6,6 +6,7 @@
 package supermarkertfxml.EmployeeUIControl;
 
 import Domain.Sales;
+import Implement.IEmployee;
 import Implement.ISale;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -13,6 +14,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.awt.Color;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -116,6 +118,8 @@ public class EmployeeFormController implements Initializable {
     private Label searchResult;
     @FXML
     private JFXButton refreshAvailbaleBTN;
+    @FXML
+    private TextField sepdTf;
 
     /**
      * Initializes the controller class.
@@ -128,28 +132,33 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     private void searchProduct(ActionEvent event) {
-        sPnameTf.getText();
-        spdTf.getText();
         if(sPnameTf.getText().isEmpty()||spdTf.getText().isEmpty()){
+            
             searchResult.setText("Product Not Found");
         }else{
             Sales sl=ISale.findToSale(sPnameTf.getText(), spdTf.getText());
-            ObservableList<Sales> list=FXCollections.observableArrayList();
-            list.add(sl);
-            AProductNameColumn.setCellValueFactory(new PropertyValueFactory<>("PName"));
-            AdescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("PDescription"));
-            AQTYColumn.setCellValueFactory(new PropertyValueFactory<>("UnityTypeQuantity"));
-            APriceUnitColumn.setCellValueFactory(new PropertyValueFactory<>("SpriceUnity"));
-            AvailableProductTable.setItems(list);
-
+            Optional<Sales> opt=Optional.ofNullable(sl);
+            if(opt.isPresent()){
+                ObservableList<Sales> list=FXCollections.observableArrayList();
+                list.add(sl);
+                AProductNameColumn.setCellValueFactory(new PropertyValueFactory<>("PName"));
+                AdescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("PDescription"));
+                AQTYColumn.setCellValueFactory(new PropertyValueFactory<>("UnityTypeQuantity"));
+                APriceUnitColumn.setCellValueFactory(new PropertyValueFactory<>("SpriceUnity"));
+                AvailableProductTable.setItems(list);
+            }else{
+              searchResult.setText("Product Not Found");
+            }
+            
         }
-        sPnameTf.setText(null);
-        spdTf.setText(null);
+        sPnameTf.setText("");
+        spdTf.setText("");
     }
 
 
     @FXML
     private void calculatePrice(ActionEvent event) {
+        
     }
 
     @FXML
@@ -170,6 +179,18 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     private void viewProductInfo(MouseEvent event) {
+       String pname=AvailableProductTable.getSelectionModel().getSelectedItem().getPName();
+       String pDescription=AvailableProductTable.getSelectionModel().getSelectedItem().getPDescription();
+       Sales s=ISale.findToSale(pname, pDescription);
+       Optional<Sales> opt=Optional.ofNullable(s);
+       if(opt.isPresent()){
+            sepnameTf.setText(s.getPName());
+            sepdTf.setText(s.getPDescription());
+            soldQTYTf.setText(s.getPQuantity()+"");
+       }else{
+         searchResult.setText("Product Not Found");
+       }
+      
     }
 
     @FXML

@@ -14,10 +14,10 @@ import java.sql.DriverManager;
  * @author NDAHIGEZE
  */
 public class ConCreation {
-   static final String PASSWD="";
-   static final String DRIVER="com.mysql.jdbc.Driver";
+   static final String PASSWD="195590103Ingabire_";
+   static final String DRIVER="com.mysql.cj.jdbc.Driver";
    static final String USER="root";
-   static final String COND="jdbc:mysql://localhost/supermarket";
+   static final String COND="jdbc:mysql://localhost/Supermarket?useSSL=false";
     static Connection con;
    public static Connection connect(){
     try{

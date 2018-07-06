@@ -8,10 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SuperMarkertFXML.jar" size="69409" download="eager" />
-    <jar href="lib\jfoenix-8.0.4.jar" size="2487326" download="eager" />
-    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
-    <jar href="lib\ojdbc6.jar" size="2739670" download="eager" />
+    <jar href="SuperMarkertFXML.jar" size="69908" download="eager" />
+    <jar href="lib/jfoenix-8.0.4.jar" size="2487326" download="eager" />
+    <jar href="lib/mysql-connector-java-8.0.11.jar" size="2036610" download="eager" />
+    <jar href="lib/ojdbc6.jar" size="2739670" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SuperMarkertFXML" >
     <param name="requiredFXVersion" value="8.0+"/>
